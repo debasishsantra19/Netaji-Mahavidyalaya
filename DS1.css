@@ -1,0 +1,439 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* হেডার ডিজাইন */
+header {
+    background: rgba(15, 23, 42, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid #38bdf8;
+}
+
+.logo-container h1 {
+    font-size: 1.6rem;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.logo-container h2 {
+    font-size: 1rem;
+    color: #f8fafc;
+    font-weight: 400;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #08a8ec;
+}
+
+/* ৩ডি স্লাইডার হিরো সেকশন */
+.hero {
+    min-height: 100vh;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
+}
+
+.hero-overlay {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.welcome-text {
+    font-size: 2.2rem;
+    color: #f1f5f9;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+.sub-text {
+    font-size: 1.2rem;
+    color: #38bdf8;
+    margin-top: 5px;
+}
+
+/* ৩ডি কন্টেইনার ও এনিমেশন */
+.carousel-3d-container {
+    width: 80%;
+    max-width: 850px;
+    height: 420px;
+    position: relative;
+    perspective: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-3d-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+    transform: translateZ(-200px) rotateY(25deg);
+    border: 3px solid rgba(56, 189, 248, 0.3);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateZ(0) rotateY(0deg);
+    z-index: 10;
+    border-color: #38bdf8;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.85);
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+    font-size: 1.1rem;
+    backdrop-filter: blur(5px);
+}
+
+/* নেভিগেশন বাটন */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(56, 189, 248, 0.3);
+    border: 2px solid #38bdf8;
+    color: white;
+    font-size: 24px;
+    padding: 10px 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 20;
+    transition: 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: #38bdf8;
+    box-shadow: 0 0 15px #38bdf8;
+}
+
+.prev-btn { left: -20px; }
+.next-btn { right: -20px; }
+
+/* ফুটার */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #090d16;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+/*=====================================================================================================================*/
+/* About Section Layout */
+
+/* ======================================================================================================================
+   1. GLOBAL & RESET STYLING
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0f172a;
+  color: #ffffff;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   2. HEADER & NAVIGATION BAR STYLING
+   ========================================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-container h1 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.logo-container h2 {
+  font-size: 0.9rem;
+  color: #00d2ff;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* Navbar Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links li a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Nav Links Hover Effect */
+.nav-links li a:hover {
+  color: #00d2ff;
+  background: rgba(0, 210, 255, 0.1);
+}
+
+/* Active Link Styling */
+.nav-links li a.active {
+  color: #00d2ff;
+  background: rgba(0, 210, 255, 0.15);
+  border: 1px solid rgba(0, 210, 255, 0.3);
+}
+
+/* ==========================================
+   3. COMMON BUTTON STYLING
+   ========================================== */
+.back-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: rgba(0, 210, 255, 0.15);
+  color: #00d2ff;
+  border: 1px solid #00d2ff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #00d2ff;
+  color: #0f172a;
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
+}
+
+/* ==========================================
+   4. ABOUT & CONTACT SECTIONS STYLING
+   ========================================== */
+.about-section, 
+.contact-section {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container, 
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.about-info, 
+.about-details-card, 
+.contact-info, 
+.contact-form-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 35px;
+  backdrop-filter: blur(10px);
+}
+
+.about-info h2, 
+.about-details-card h2, 
+.contact-info h2, 
+.contact-form-card h2 {
+  color: #00d2ff;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.about-info p, 
+.contact-info p {
+  color: #cbd5e1;
+  margin-bottom: 25px;
+}
+
+.info-item {
+  margin-bottom: 20px;
+}
+
+.info-item h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.info-item p, 
+.info-item a {
+  color: #00d2ff;
+  text-decoration: none;
+}
+
+/* About Grid Cards */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.grid-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.grid-card:hover {
+  transform: translateY(-3px);
+  border-color: #00d2ff;
+}
+
+.grid-card h3 {
+  color: #00d2ff;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.grid-card p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ==========================================
+   5. CONTACT FORM STYLING
+   ========================================== */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.input-group input, 
+.input-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+  border-color: #00d2ff;
+  box-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #00d2ff, #0072ff);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+
+/* ==========================================
+   6. RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .about-container, 
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+}

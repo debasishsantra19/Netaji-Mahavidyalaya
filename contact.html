@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Netaji Mahavidyalaya BCA Department</title>
+  <link rel="stylesheet" href="DS1.css">
+</head>
+<body>
+
+  <!-- Header / Navigation Bar -->
+  <header>
+    <div class="logo-container">
+      <h1>Netaji Mahavidyalaya</h1>
+      <h2>BCA Department</h2>
+    </div>
+    <ul class="nav-links">
+      <li><a href="DS1.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </header>
+
+  <!-- Contact Main Section -->
+  <section class="contact-section">
+    <div class="contact-container">
+
+      <!-- Back to Home Button -->
+      <div style="grid-column: 1 / -1; margin-bottom: 10px;">
+        <a href="DS1.html" class="back-btn">← Back to Home Page</a>
+      </div>
+      
+      <!-- Left Side: Contact Information -->
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p>If you have any queries regarding admission, course structure, or department details, feel free to reach out to us.</p>
+        
+        <div class="info-item">
+          <h3>📍 Address</h3>
+          <p>Netaji Mahavidyalaya, BCA Department<br>Arambagh, Hooghly, West Bengal - 712601</p>
+        </div>
+
+        <div class="info-item">
+          <h3>✉️ Email</h3>
+          <!-- ইমেইল আইডি বসানোর জন্য ফাঁকা রাখা হয়েছে -->
+          <p><a href="mailto:YOUR_EMAIL_HERE">YOUR_EMAIL_HERE</a></p> 
+        </div>
+
+        <div class="info-item">
+          <h3>📞 Phone</h3>
+          <p>+91 XXXXXXXXXX</p>
+        </div>
+      </div>
+
+      <!-- Right Side: Contact Form -->
+      <div class="contact-form-card">
+        <h2>Send Us a Message</h2>
+        <form action="#" method="POST">
+          <div class="input-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="input-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+          </div>
+
+          <div class="input-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Reason for contact" required>
+          </div>
+
+          <div class="input-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

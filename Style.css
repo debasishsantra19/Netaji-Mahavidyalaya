@@ -1,0 +1,519 @@
+/* ==========================================
+   1. GLOBAL & RESET STYLING
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0f172a;
+  color: #ffffff;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   2. HEADER & NAVIGATION BAR
+   ========================================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-container h1 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.logo-container h2 {
+  font-size: 0.9rem;
+  color: #00d2ff;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links li a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #00d2ff;
+  background: rgba(0, 210, 255, 0.1);
+}
+
+.nav-links li a.active {
+  color: #00d2ff;
+  background: rgba(0, 210, 255, 0.15);
+  border: 1px solid rgba(0, 210, 255, 0.3);
+}
+
+/* ==========================================
+   3. BACK TO HOME BUTTON
+   ========================================== */
+.back-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: rgba(0, 210, 255, 0.15);
+  color: #00d2ff;
+  border: 1px solid #00d2ff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #00d2ff;
+  color: #0f172a;
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
+}
+
+/* ==========================================
+   4. ABOUT & CONTACT CONTAINER LAYOUT
+   ========================================== */
+.about-section, 
+.contact-section {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container, 
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Glassmorphism Card Design (Contact & About Both) */
+.about-info, 
+.about-details-card, 
+.contact-info, 
+.contact-form-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 35px;
+  backdrop-filter: blur(10px);
+}
+
+.about-info h2, 
+.about-details-card h2, 
+.contact-info h2, 
+.contact-form-card h2 {
+  color: #00d2ff;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.about-info p, 
+.contact-info p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.info-item {
+  margin-bottom: 20px;
+}
+
+.info-item h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.info-item p, 
+.info-item a {
+  color: #00d2ff;
+  text-decoration: none;
+}
+
+/* ==========================================
+   5. ABOUT HIGHLIGHTS & GRID CARDS
+   ========================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.grid-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 16px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-card:hover {
+  transform: translateY(-4px);
+  border-color: #00d2ff;
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.2);
+}
+
+.grid-card h3 {
+  color: #00d2ff;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.grid-card p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ==========================================
+   6. CONTACT FORM STYLING
+   ========================================== */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.input-group input, 
+.input-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+  border-color: #00d2ff;
+  box-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #00d2ff, #0072ff);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+
+/* ==========================================
+   7. RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .about-container, 
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+}
+/* ==========================================
+   1. GLOBAL RESET & LIQUID GLASS BASE
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top left, #1e293b, #0f172a, #020617);
+  color: #ffffff;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   2. HEADER & DROPDOWN (LIQUID GLASS STYLING)
+   ========================================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-container h1 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.logo-container h2 {
+  font-size: 0.9rem;
+  color: #00d2ff;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* Navbar Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #00d2ff;
+  background: rgba(0, 210, 255, 0.15);
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  border-radius: 12px;
+  padding: 10px 0;
+  width: 200px;
+  max-height: 380px;
+  overflow-y: auto;
+  box-shadow: 0 12px 40px rgba(0, 210, 255, 0.25);
+  list-style: none;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  border-radius: 0;
+  border: none;
+}
+
+.dropdown-menu li a:hover {
+  background: rgba(0, 210, 255, 0.2);
+  color: #ffffff;
+  border: none;
+  box-shadow: none;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Custom Scrollbar for Dropdown Menu */
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: rgba(0, 210, 255, 0.4);
+  border-radius: 10px;
+}
+
+/* ==========================================
+   3. BUTTONS & UTILITIES
+   ========================================== */
+.back-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: rgba(0, 210, 255, 0.12);
+  color: #00d2ff;
+  border: 1px solid rgba(0, 210, 255, 0.4);
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #00d2ff;
+  color: #0f172a;
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+}
+
+/* ==========================================
+   4. LIQUID GLASS CARDS & COURSES GRID
+   ========================================== */
+.courses-section {
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.courses-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.courses-header-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.courses-header-card h2 {
+  color: #00d2ff;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.courses-header-card p {
+  color: #cbd5e1;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* Liquid Glass Card Styling */
+.liquid-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 25px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.liquid-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(0, 210, 255, 0.6);
+  box-shadow: 0 15px 35px rgba(0, 210, 255, 0.25), inset 0 0 15px rgba(0, 210, 255, 0.1);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.liquid-card h3 {
+  color: #00d2ff;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.liquid-card p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.course-btn {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.8), rgba(0, 114, 255, 0.8));
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.course-btn:hover {
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Responsive Support */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .dropdown-menu {
+    position: relative;
+    width: 100%;
+  }
+}
