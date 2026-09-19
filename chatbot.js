@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     style.innerHTML = `
         #chatbot-container {
             position: fixed;
-            bottom: 200px;
+            bottom: 25px;
             left: 25px;
             z-index: 99999;
             user-select: none;
@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
             flex-direction: column;
             align-items: center;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            touch-action: none;
         }
 
         /* AI badge strictly on top of ANGEL button */
@@ -85,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
             align-items: center;
             border-bottom: 1px solid rgba(0, 0, 0, 0.06);
             cursor: move;
+            touch-action: none;
         }
 
         .chat-title {
@@ -462,28 +464,42 @@ document.addEventListener("DOMContentLoaded", function () {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // 4. Floating Chatbot Button Dragging
+    // 4. Floating Chatbot Button Dragging (Mouse & Touch)
     let offsetX, offsetY;
-    chatbotBtn.addEventListener("mousedown", function (e) {
+
+    function startBtnDrag(clientX, clientY) {
         hasDragged = false;
         isDragging = true;
-        offsetX = e.clientX - chatbotContainer.getBoundingClientRect().left;
-        offsetY = e.clientY - chatbotContainer.getBoundingClientRect().top;
+        offsetX = clientX - chatbotContainer.getBoundingClientRect().left;
+        offsetY = clientY - chatbotContainer.getBoundingClientRect().top;
+    }
+
+    function moveBtnDrag(clientX, clientY) {
+        if (!isDragging) return;
+        hasDragged = true;
+
+        let x = clientX - offsetX;
+        let y = clientY - offsetY;
+
+        chatbotContainer.style.left = `${Math.max(0, x)}px`;
+        chatbotContainer.style.top = `${Math.max(0, y)}px`;
+        chatbotContainer.style.bottom = "auto";
+    }
+
+    function endBtnDrag() {
+        isDragging = false;
+    }
+
+    // Mouse Events
+    chatbotBtn.addEventListener("mousedown", function (e) {
+        startBtnDrag(e.clientX, e.clientY);
 
         function onMouseMove(e) {
-            if (!isDragging) return;
-            hasDragged = true;
-
-            let x = e.clientX - offsetX;
-            let y = e.clientY - offsetY;
-
-            chatbotContainer.style.left = `${Math.max(0, x)}px`;
-            chatbotContainer.style.top = `${Math.max(0, y)}px`;
-            chatbotContainer.style.bottom = "auto";
+            moveBtnDrag(e.clientX, e.clientY);
         }
 
         function onMouseUp() {
-            isDragging = false;
+            endBtnDrag();
             document.removeEventListener("mousemove", onMouseMove);
             document.removeEventListener("mouseup", onMouseUp);
         }
@@ -492,26 +508,60 @@ document.addEventListener("DOMContentLoaded", function () {
         document.addEventListener("mouseup", onMouseUp);
     });
 
-    // 5. Chat Window Header Dragging
+    // Touch Events (Mobile)
+    chatbotBtn.addEventListener("touchstart", function (e) {
+        const touch = e.touches[0];
+        startBtnDrag(touch.clientX, touch.clientY);
+
+        function onTouchMove(e) {
+            const moveTouch = e.touches[0];
+            moveBtnDrag(moveTouch.clientX, moveTouch.clientY);
+        }
+
+        function onTouchEnd() {
+            endBtnDrag();
+            document.removeEventListener("touchmove", onTouchMove);
+            document.removeEventListener("touchend", onTouchEnd);
+        }
+
+        document.addEventListener("touchmove", onTouchMove, { passive: false });
+        document.addEventListener("touchend", onTouchEnd);
+    }, { passive: false });
+
+    // 5. Chat Window Header Dragging (Mouse & Touch)
     let winOffsetX, winOffsetY, isWinDragging = false;
+
+    function startWinDrag(clientX, clientY) {
+        isWinDragging = true;
+        winOffsetX = clientX - chatbotContainer.getBoundingClientRect().left;
+        winOffsetY = clientY - chatbotContainer.getBoundingClientRect().top;
+    }
+
+    function moveWinDrag(clientX, clientY) {
+        if (!isWinDragging) return;
+        let x = clientX - winOffsetX;
+        let y = clientY - winOffsetY;
+
+        chatbotContainer.style.left = `${Math.max(0, x)}px`;
+        chatbotContainer.style.top = `${Math.max(0, y)}px`;
+        chatbotContainer.style.bottom = "auto";
+    }
+
+    function endWinDrag() {
+        isWinDragging = false;
+    }
+
+    // Mouse Events
     chatHeader.addEventListener("mousedown", function (e) {
         if (e.target === closeChat) return;
-        isWinDragging = true;
-        winOffsetX = e.clientX - chatbotContainer.getBoundingClientRect().left;
-        winOffsetY = e.clientY - chatbotContainer.getBoundingClientRect().top;
+        startWinDrag(e.clientX, e.clientY);
 
         function onWinMouseMove(e) {
-            if (!isWinDragging) return;
-            let x = e.clientX - winOffsetX;
-            let y = e.clientY - winOffsetY;
-
-            chatbotContainer.style.left = `${Math.max(0, x)}px`;
-            chatbotContainer.style.top = `${Math.max(0, y)}px`;
-            chatbotContainer.style.bottom = "auto";
+            moveWinDrag(e.clientX, e.clientY);
         }
 
         function onWinMouseUp() {
-            isWinDragging = false;
+            endWinDrag();
             document.removeEventListener("mousemove", onWinMouseMove);
             document.removeEventListener("mouseup", onWinMouseUp);
         }
@@ -519,4 +569,25 @@ document.addEventListener("DOMContentLoaded", function () {
         document.addEventListener("mousemove", onWinMouseMove);
         document.addEventListener("mouseup", onWinMouseUp);
     });
+
+    // Touch Events (Mobile)
+    chatHeader.addEventListener("touchstart", function (e) {
+        if (e.target === closeChat) return;
+        const touch = e.touches[0];
+        startWinDrag(touch.clientX, touch.clientY);
+
+        function onWinTouchMove(e) {
+            const moveTouch = e.touches[0];
+            moveWinDrag(moveTouch.clientX, moveTouch.clientY);
+        }
+
+        function onWinTouchEnd() {
+            endWinDrag();
+            document.removeEventListener("touchmove", onWinTouchMove);
+            document.removeEventListener("touchend", onWinTouchEnd);
+        }
+
+        document.addEventListener("touchmove", onWinTouchMove, { passive: false });
+        document.addEventListener("touchend", onWinTouchEnd);
+    }, { passive: false });
 });
