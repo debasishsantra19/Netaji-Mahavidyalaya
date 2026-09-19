@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     style.innerHTML = `
         #chatbot-container {
             position: fixed;
-            bottom: 25px;
+            bottom: 200px;
             left: 25px;
             z-index: 99999;
             user-select: none;
